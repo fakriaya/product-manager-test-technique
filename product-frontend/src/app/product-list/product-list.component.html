@@ -1,0 +1,92 @@
+<div class="container mt-4">
+  <div class="d-flex align-items-center justify-content-between mb-4">
+    <div>
+      <h2 class="fw-bold text-dark">Catalogue Produits</h2>
+      <p class="text-muted mb-0">Gérez votre inventaire en temps réel</p>
+    </div>
+    <button class="btn btn-success" (click)="onAddProduct()" *ngIf="!showForm">
+      <i class="fas fa-plus-circle me-2"></i>Nouveau Produit
+    </button>
+  </div>
+
+
+  <div *ngIf="showForm" class="row mb-4">
+    <div class="col">
+      <app-product-form [product]="selectedProduct" (formClose)="onFormClose()"></app-product-form>    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Liste des Produits</h5>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead class="table-light">
+              <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Catégorie</th>
+                <th>Spécifique</th>
+                <th>Fichier</th>
+                <th class="text-center">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let product of products$ | async">
+                <td>
+                  <strong>{{ product.nom }}</strong>
+                </td>
+                <td>
+                    <span class="text-success fw-bold">
+                      {{ product.prix }}€                   </span>
+                </td>
+                <td>
+                    <span class="badge rounded-pill" [ngClass]="getCategoryBadgeClass(product.categorie)">
+                        {{ product.categorie }}
+                    </span>
+                </td>
+                <td>{{ getSpecificField(product) }}</td>
+                <td>
+                    <span *ngIf="product.fichier; else noFile" class="badge bg-info">
+                      <i class="fas fa-file"></i>
+                      {{ product.fichier.length > 20 ? product.fichier.substring(0, 20) + '...' : product.fichier }}
+                    </span>
+                  <ng-template #noFile>
+                    <span class="text-muted">-</span>
+                  </ng-template>
+                </td>
+                <td class="text-center">
+                  <div class="btn-group" role="group">
+                    <button
+                      class="btn btn-sm btn-outline-primary me-1"
+                      (click)="onEditProduct(product)"
+                      title="Modifier">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button
+                      class="btn btn-sm btn-outline-danger"
+                      (click)="onDeleteProduct(product)"
+                      title="Supprimer">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr *ngIf="(products$ | async)?.length === 0">
+                <td colspan="6" class="text-center py-4 text-muted">
+                  <i class="fas fa-inbox fa-2x mb-2 d-block"></i>
+                  Aucun produit trouvé
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

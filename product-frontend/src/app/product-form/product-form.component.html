@@ -1,0 +1,154 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">{{ product ? 'Modifier le Produit' : 'Nouveau Produit' }}</h5>  </div>
+  <div class="card-body">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <!-- Nom -->
+        <div class="col-md-6 mb-3">
+          <label for="nom" class="form-label">Nom du produit *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nom"
+            formControlName="nom"
+            [class.is-invalid]="nom?.invalid && nom?.touched"
+            placeholder="Entrez le nom du produit">
+          <div *ngIf="nom?.invalid && nom?.touched" class="invalid-feedback">
+            <div *ngIf="nom?.errors?.['required']">Le nom est obligatoire</div>
+            <div *ngIf="nom?.errors?.['maxlength']">Le nom ne peut pas dépasser 100 caractères</div>
+          </div>
+        </div>
+
+        <!-- Prix -->
+        <div class="col-md-6 mb-3">
+          <label for="prix" class="form-label">Prix (€) *</label>
+          <input
+            type="number"
+            class="form-control"
+            id="prix"
+            formControlName="prix"
+            [class.is-invalid]="prix?.invalid && prix?.touched"
+            step="0.01"
+            min="0.01"
+            placeholder="0.00">
+          <div *ngIf="prix?.invalid && prix?.touched" class="invalid-feedback">
+            <div *ngIf="prix?.errors?.['required']">Le prix est obligatoire</div>
+            <div *ngIf="prix?.errors?.['min']">Le prix doit être supérieur à 0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Catégorie -->
+        <div class="col-md-4 mb-3">
+          <label for="categorie" class="form-label">Catégorie *</label>
+          <select
+            class="form-control"
+            id="categorie"
+            formControlName="categorie"
+            [class.is-invalid]="categorie?.invalid && categorie?.touched">
+            <option value="">Sélectionnez une catégorie</option>
+            <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+          </select>
+          <div *ngIf="categorie?.invalid && categorie?.touched" class="invalid-feedback">
+            <div *ngIf="categorie?.errors?.['required']">La catégorie est obligatoire</div>
+          </div>
+        </div>
+
+        <!-- Référence (Informatique) -->
+        <div *ngIf="shouldShowReference" class="col-md-4 mb-3">
+          <label for="reference" class="form-label">Référence *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="reference"
+            formControlName="reference"
+            [class.is-invalid]="reference?.invalid && reference?.touched"
+            placeholder="INF-1234">
+          <div *ngIf="reference?.invalid && reference?.touched" class="invalid-feedback">
+            <div *ngIf="reference?.errors?.['required']">La référence est obligatoire pour les produits Informatique</div>
+          </div>
+        </div>
+
+        <!-- Matricule (Véhicule) -->
+        <div *ngIf="shouldShowMatricule" class="col-md-4 mb-3">
+          <label for="matricule" class="form-label">Matricule *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="matricule"
+            formControlName="matricule"
+            [class.is-invalid]="matricule?.invalid && matricule?.touched"
+            placeholder="123-ABC-45">
+          <div *ngIf="matricule?.invalid && matricule?.touched" class="invalid-feedback">
+            <div *ngIf="matricule?.errors?.['required']">Le matricule est obligatoire pour les produits Véhicule</div>
+          </div>
+        </div>
+
+        <!-- Date d'expiration (Alimentaire) -->
+        <div *ngIf="shouldShowDateExpiration" class="col-md-4 mb-3">
+          <label for="dateExpiration" class="form-label">Date d'expiration *</label>
+          <input
+            type="date"
+            class="form-control"
+            id="dateExpiration"
+            formControlName="dateExpiration"
+            [class.is-invalid]="dateExpiration?.invalid && dateExpiration?.touched">
+          <div *ngIf="dateExpiration?.invalid && dateExpiration?.touched" class="invalid-feedback">
+            <div *ngIf="dateExpiration?.errors?.['required']">La date d'expiration est obligatoire pour les produits Alimentaire</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload de fichier -->
+      <div class="mb-3">
+        <label for="fichier" class="form-label">Fichier (optionnel)</label>
+        <input
+          type="file"
+          class="form-control"
+          id="fichier"
+          (change)="onFileSelected($event)"
+          accept="image/*,.pdf,.doc,.docx,.txt">
+        <div class="form-text">Formats acceptés: Images, PDF, Word, Texte (max 10MB)</div>
+
+        <!-- Fichier sélectionné -->
+        <div *ngIf="selectedFile" class="mt-2">
+          <div class="d-flex align-items-center">
+            <span class="me-2">Fichier: <strong>{{ selectedFile!.name }}</strong></span>
+            <button type="button" class="btn btn-sm btn-outline-danger rounded-circle d-flex align-items-center justify-content-center"
+                    (click)="onRemoveFile()" style="width: 30px; height: 30px;">
+              <i class="fas fa-times"></i>
+            </button>
+
+          </div>
+
+          <!-- Prévisualisation image -->
+          <div *ngIf="filePreview" class="mt-2">
+            <img [src]="filePreview" alt="Prévisualisation" class="img-thumbnail" style="max-width: 200px; max-height: 150px;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Boutons d'action -->
+      <div class="d-flex justify-content-between">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="onCancel()"
+          [disabled]="isSubmitting">
+          <i class="fas fa-times"></i> Annuler
+        </button>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="productForm.invalid || isSubmitting">
+          <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2"></span>
+          <i *ngIf="!isSubmitting" class="fas fa-plus"></i>
+          {{ isSubmitting ? (product ? 'Modification...' : 'Création...') : (product ? 'Modifier Produit' : 'Créer Produit') }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
