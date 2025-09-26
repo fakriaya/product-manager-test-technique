@@ -53,7 +53,7 @@ git clone https://github.com/VOTRE_USERNAME/product-manager-test-technique.git
 cd product-manager-test-technique
 2. Configuration Backend
 Copier le fichier de configuration :
-bashcp application.properties.example src/main/resources/application.properties
+application.properties.example src/main/resources/application.properties
 Configurer l'email dans application.properties :
 properties# Configuration email Gmail
 spring.mail.username=votre.email@gmail.com
@@ -89,7 +89,13 @@ Tâches Planifiées (Cron Jobs)
 TâcheFréquenceDescriptionArchivage produitsQuotidien 2hSupprime produits alimentaires expirésRécapitulatif quotidienQuotidien 8hEmail statistiques du catalogueAlerte expirationQuotidien 9hPrévient des produits expirant bientôt
 API REST Endpoints
 Produits
-MéthodeEndpointDescriptionGET/api/produitsListe tous les produitsGET/api/produits/{id}Détails d'un produitPOST/api/produitsCréer un produitPUT/api/produits/{id}Modifier un produitDELETE/api/produits/{id}Supprimer un produitGET/api/produits/healthStatut de l'API
+MéthodeEndpointDescription
+GET/api/produitsListe tous les produits
+GET/api/produits/{id}Détails d'un produit
+POST/api/produitsCréer un produit
+PUT/api/produits/{id}Modifier un produit
+DELETE/api/produits/{id}Supprimer un produit
+GET/api/produits/healthStatut de l'API
 Exemples d'utilisation
 Créer un produit Informatique :
 bashcurl -X POST http://localhost:8081/api/produits \
@@ -114,7 +120,7 @@ Générer un mot de passe d'application :
 
 Google Account → Sécurité → Mots de passe d'application
 Sélectionner "Autre" → "Product Manager"
-Copier le mot de passe généré (16 caractères)
+Copier le mot de passe généré 
 
 
 Configurer application.properties avec le mot de passe généré
@@ -178,12 +184,6 @@ Vérifier les paramètres SMTP
 
 Problème CORS
 Le backend accepte les requêtes de http://localhost:4200 par défaut.
-Déploiement
-Variables d'environnement de production
-bashexport SPRING_MAIL_USERNAME=production@company.com
-export SPRING_MAIL_PASSWORD=secure_password
-export APP_ADMIN_EMAIL=admin@company.com
-export SPRING_PROFILES_ACTIVE=prod
-Auteur
+
 Test Technique Java/Angular - Application full-stack démontrant les compétences en développement moderne
 Application développée dans le cadre d'un test technique pour démontrer les compétences full-stack Java/Angular
