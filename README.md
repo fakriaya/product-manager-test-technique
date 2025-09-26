@@ -1,3 +1,15 @@
+
+
+<img width="1920" height="488" alt="image" src="https://github.com/user-attachments/assets/ca78fe31-d40c-4bdd-9396-d4991dce047d" />
+<img width="1920" height="773" alt="image" src="https://github.com/user-attachments/assets/571a2d6a-1806-4eba-9563-548b5c41bb1c" />
+<img width="1918" height="877" alt="image" src="https://github.com/user-attachments/assets/549fdf31-9dbf-4bc6-91be-9c8b4d118a38" />
+<img width="1920" height="465" alt="image" src="https://github.com/user-attachments/assets/e00fd37d-97fd-407f-8304-fb2a3a20a4a7" />
+<img width="1838" height="881" alt="image" src="https://github.com/user-attachments/assets/ae95433f-65ff-4048-b3cb-b599be5ecad8" />
+<img width="1621" height="806" alt="image" src="https://github.com/user-attachments/assets/3b58372a-7bbe-4dd9-b781-6ffee57c5950" />
+<img width="1861" height="698" alt="image" src="https://github.com/user-attachments/assets/45ed71c9-b473-401f-bec6-6d4d0d302346" />
+<img width="1568" height="623" alt="image" src="https://github.com/user-attachments/assets/703c4b94-df66-4071-a09e-4bcbbb2855e2" />
+<img width="1920" height="593" alt="image" src="https://github.com/user-attachments/assets/2be8441a-d554-48b1-b753-e1d1ecbd739e" />
+
 # Product Manager - Application Full Stack Java/Angular
 
 Application complète de gestion de produits avec validation dynamique, upload de fichiers, notifications email et tâches planifiées.
@@ -53,7 +65,7 @@ git clone https://github.com/VOTRE_USERNAME/product-manager-test-technique.git
 cd product-manager-test-technique
 2. Configuration Backend
 Copier le fichier de configuration :
-bashcp application.properties.example src/main/resources/application.properties
+application.properties.example src/main/resources/application.properties
 Configurer l'email dans application.properties :
 properties# Configuration email Gmail
 spring.mail.username=votre.email@gmail.com
@@ -89,7 +101,13 @@ Tâches Planifiées (Cron Jobs)
 TâcheFréquenceDescriptionArchivage produitsQuotidien 2hSupprime produits alimentaires expirésRécapitulatif quotidienQuotidien 8hEmail statistiques du catalogueAlerte expirationQuotidien 9hPrévient des produits expirant bientôt
 API REST Endpoints
 Produits
-MéthodeEndpointDescriptionGET/api/produitsListe tous les produitsGET/api/produits/{id}Détails d'un produitPOST/api/produitsCréer un produitPUT/api/produits/{id}Modifier un produitDELETE/api/produits/{id}Supprimer un produitGET/api/produits/healthStatut de l'API
+MéthodeEndpointDescription
+GET/api/produitsListe tous les produits
+GET/api/produits/{id}Détails d'un produit
+POST/api/produitsCréer un produit
+PUT/api/produits/{id}Modifier un produit
+DELETE/api/produits/{id}Supprimer un produit
+GET/api/produits/healthStatut de l'API
 Exemples d'utilisation
 Créer un produit Informatique :
 bashcurl -X POST http://localhost:8081/api/produits \
@@ -114,7 +132,7 @@ Générer un mot de passe d'application :
 
 Google Account → Sécurité → Mots de passe d'application
 Sélectionner "Autre" → "Product Manager"
-Copier le mot de passe généré (16 caractères)
+Copier le mot de passe généré 
 
 
 Configurer application.properties avec le mot de passe généré
@@ -178,12 +196,8 @@ Vérifier les paramètres SMTP
 
 Problème CORS
 Le backend accepte les requêtes de http://localhost:4200 par défaut.
-Déploiement
-Variables d'environnement de production
-bashexport SPRING_MAIL_USERNAME=production@company.com
-export SPRING_MAIL_PASSWORD=secure_password
-export APP_ADMIN_EMAIL=admin@company.com
-export SPRING_PROFILES_ACTIVE=prod
-Auteur
+
 Test Technique Java/Angular - Application full-stack démontrant les compétences en développement moderne
 Application développée dans le cadre d'un test technique pour démontrer les compétences full-stack Java/Angular
+
+
