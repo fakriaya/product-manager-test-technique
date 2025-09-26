@@ -187,3 +187,5 @@ Le backend accepte les requêtes de http://localhost:4200 par défaut.
 
 Test Technique Java/Angular - Application full-stack démontrant les compétences en développement moderne
 Application développée dans le cadre d'un test technique pour démontrer les compétences full-stack Java/Angular
+
+
