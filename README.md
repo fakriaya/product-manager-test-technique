@@ -1,3 +1,5 @@
+<img width="1503" height="650" alt="image" src="https://github.com/user-attachments/assets/49d1d650-624d-4975-b143-5512e7221459" />
+<img width="1920" height="536" alt="image" src="https://github.com/user-attachments/assets/0bc0093b-f597-4296-a939-8777c60b1400" />
 # Product Manager - Application Full Stack Java/Angular
 
 Application complète de gestion de produits avec validation dynamique, upload de fichiers, notifications email et tâches planifiées.
