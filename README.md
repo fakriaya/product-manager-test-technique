@@ -9,6 +9,10 @@
 <img width="1861" height="698" alt="image" src="https://github.com/user-attachments/assets/45ed71c9-b473-401f-bec6-6d4d0d302346" />
 <img width="1568" height="623" alt="image" src="https://github.com/user-attachments/assets/703c4b94-df66-4071-a09e-4bcbbb2855e2" />
 <img width="1920" height="593" alt="image" src="https://github.com/user-attachments/assets/2be8441a-d554-48b1-b753-e1d1ecbd739e" />
+<img width="756" height="342" alt="image" src="https://github.com/user-attachments/assets/302e8b5a-dbe3-44da-bc0f-328a28aaf79a" />
+<img width="1162" height="993" alt="image" src="https://github.com/user-attachments/assets/5f7323aa-7e63-4d7c-b0cf-f01a01a39a3a" />
+
+
 
 # Product Manager - Application Full Stack Java/Angular
 
